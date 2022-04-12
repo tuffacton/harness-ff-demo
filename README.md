@@ -10,7 +10,7 @@ To use:
  - Type: Boolean, Name: CV Module, ID: CV_Module
  - Type: Multivariate, Name: Trial Length, ID: Trial_Length, Values: 7-Day Trial, 14-Day Trial, 30-Day Trial
  
-3) Create an environment and SDK key
+3) Create an environment and Client-side SDK key
 4) Access the site at http://konrness.github.io/harness-ff-demo/?sdkkey=43adeb5d-5a79-4cd2-bd44-0208a2464894, changing the sdkkey to your project's key.
 5) On first access, you will be prompted to enter an email address. You can use this email address for feature targeting.
 
