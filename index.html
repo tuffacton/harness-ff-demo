@@ -21,16 +21,14 @@
   <script type="module" src="https://unpkg.com/@harnessio/ff-javascript-client-sdk/dist/sdk.client.js"></script>
 
   <script type="module">
-    console.log("Importing SDK");
     import { initialize, Event } from 'https://unpkg.com/@harnessio/ff-javascript-client-sdk/dist/sdk.client.js';
-    console.log("SDK Imported");
 
     $(function() {
 
       var email = login();
 
       console.log("Initializing SDK: ", "email=", email);
-      var cf = initialize(
+      var ff = initialize(
         getSdkKey(),
         {
           identifier: email,
@@ -42,25 +40,25 @@
       )
 
       var ready=false;
-      cf.on(Event.READY, flags => {
+      ff.on(Event.READY, flags => {
         console.log("READY");
         enableModules();
         ready = true;
       })
 
-      cf.on(Event.CHANGED, flags => {
+      ff.on(Event.CHANGED, flags => {
         if (! ready) return;
         console.log("CHANGED");
         enableModules();
       });
 
       function enableModules() {
-        enableModule("builds", cf.variation('Builds_Module', false));
-        enableModule("feature-flags", cf.variation('Feature_Flag_Module', false));
-        enableModule("cloud-cost-management", cf.variation('CCM_Module', false));
-        enableModule("continuous-verification", cf.variation('CV_Module', false));
+        enableModule("builds", ff.variation('Builds_Module', false));
+        enableModule("feature-flags", ff.variation('Feature_Flag_Module', false));
+        enableModule("cloud-cost-management", ff.variation('CCM_Module', false));
+        enableModule("continuous-verification", ff.variation('CV_Module', false));
 
-        var trialLength = cf.variation('Trial_Length', "14-Day Trial");
+        var trialLength = ff.variation('Trial_Length', "14-Day Trial");
         console.log("Trial Length:", trialLength);
         $('.trial').text(trialLength);
       }
